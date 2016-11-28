@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(
                 AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
                 configurationBuilder.build());
+
         //lanzamos la solicitud de verificación
         startActivityForResult(intent, APP_REQUEST_CODE_PHONE);
     }
