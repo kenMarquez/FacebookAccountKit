@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import com.facebook.accountkit.AccountKitLoginResult;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
@@ -89,7 +91,47 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.e("myLog", "code: " + requestCode);
+        /**
+         * Confirmamos que el request sea por la llamada del ingreso por email o por telefono
+         */
+        if (requestCode == APP_REQUEST_CODE_PHONE || requestCode == APP_REQUEST_CODE_EMAIL) {
+            /**
+             *Como es una respuesta del SDK de AccountKit podemos crear una instancia de
+             *  AccountKitLoginResult
+             */
+            AccountKitLoginResult loginResult = data.getParcelableExtra(AccountKitLoginResult.RESULT_KEY);
+
+            String toastMessage;
+
+            if (loginResult.getError() != null) {
+                //Aquí va el codigo cuando se ejecute algún error de Facebook AccountKit
+                toastMessage = loginResult.getError().getErrorType().getMessage();
+
+            } else if (loginResult.wasCancelled()) {
+                //Aquí va el codigo cuando se cancela el ingreso ya sea de correo o de telefono
+                toastMessage = "Login Cancelled";
+            } else {
+                /**
+                 * Podemos revisar si ya tenemos el AccessToken
+                 */
+                if (loginResult.getAccessToken() != null) {
+                    toastMessage = "Success:" + loginResult.getAccessToken().getAccountId();
+                } else {
+                    toastMessage = String.format(
+                            "Success:%s...",
+                            loginResult.getAuthorizationCode().substring(0, 10));
+                }
+
+            }
+
+            //Le mostramos el mensaje resultante dependiendo del resultado que
+            //Facebook nos da
+            Toast.makeText(
+                    this,
+                    toastMessage,
+                    Toast.LENGTH_LONG)
+                    .show();
+        }
     }
 
 
