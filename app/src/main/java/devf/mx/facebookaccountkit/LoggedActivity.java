@@ -32,8 +32,8 @@ public class LoggedActivity extends AppCompatActivity {
                 // Get email
                 String email = account.getEmail();
 
-                Log.i(TAG, phoneNumberString);
-                Log.i(TAG, email);
+                Log.i(TAG, "phone: " + phoneNumberString);
+                Log.i(TAG, "email: " + email);
             }
 
             @Override

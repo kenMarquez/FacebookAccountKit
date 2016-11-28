@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
                 new AccountKitConfiguration.AccountKitConfigurationBuilder(
                         LoginType.EMAIL,
-                        AccountKitActivity.ResponseType.CODE);
+                        AccountKitActivity.ResponseType.TOKEN);
 
         //Solo le pasamos como parametro la configuración anterior
         intent.putExtra(
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
                 new AccountKitConfiguration.AccountKitConfigurationBuilder(
                         LoginType.PHONE,
-                        AccountKitActivity.ResponseType.CODE);
+                        AccountKitActivity.ResponseType.TOKEN);
 
         //Solo le pasamos como parametro la configuración anterior
         intent.putExtra(
