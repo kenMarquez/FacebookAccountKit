@@ -3,4 +3,5 @@
     <!--Ingresamos el Identificador de la aplicación que encontramos en nuestro dashboard Web-->
     <string name="FACEBOOK_APP_ID">1913212342263680</string>
     <string name="ACCOUNT_KIT_CLIENT_TOKEN">512a3df56d8a69aaaa0ee9e09f192391</string>
+    <string name="ak_login_protocol_scheme">ak512a3df56d8a69aaaa0ee9e09f192391</string>
 </resources>

@@ -122,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
                             loginResult.getAuthorizationCode().substring(0, 10));
                 }
 
+                startActivity(new Intent(MainActivity.this, LoggedActivity.class));
+
             }
 
             //Le mostramos el mensaje resultante dependiendo del resultado que
