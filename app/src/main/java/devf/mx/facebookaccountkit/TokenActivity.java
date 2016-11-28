@@ -21,6 +21,7 @@ public class TokenActivity extends AppCompatActivity {
             startActivity(new Intent(TokenActivity.this, MainActivity.class));
         } else {
             //Handle new or logged out user
+
         }
     }
 }
